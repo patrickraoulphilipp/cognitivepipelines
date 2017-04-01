@@ -1,0 +1,41 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix msm: <http://cms-wg.sti2.org/minimal-service-model#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sawsdl: <http://www.w3.org/ns/sawsdl#> .
+@prefix sp: <http://surgipedia.sfb125.de/wiki/Special:URIResolver/> .
+@prefix sparql: <http://www.w3.org/TR/rdf-sparql-query/#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://aifb-ls3-vm2.aifb.kit.edu:8080/cognitiveapps/MeanFree> a sp:Category-3ACognitive_App ;
+    rdfs:label "Cognitive-StripTs-Service" ;
+    sp:Property-3AContributor sp:Patrick_Philipp,
+        sp:Philipp_Gemmeke ;
+    sp:Property-3ACreator sp:Christian_Weber,
+        sp:Michael_Goetz ;
+    sp:Property-3AHasExampleRequest <http://surgipedia.sfb125.de/images/1/1f/StripTs_example_request.ttl> ;
+    sp:Property-3AHasExampleResponse <http://surgipedia.sfb125.de/images/1/17/StripTs_example_response.ttl> ;
+    sp:Property-3AHasSourceCode <https://code.google.com/p/cognitive-apps.jersey> ;
+    sp:Property-3AHas_description "Normalization of a brain image."@en ;
+    owl:sameAs sp:StripTs_Description ;
+    sawsdl:modelReference [ a msm:Precondition ;
+            rdf:value """{
+					
+					?brainImage rdf:type sp:Category-3ABrainImage.
+					?brainImage	dc:format sp:Nrrd.
+					
+					?brainMask rdf:type sp:Category-3ABrainMask.
+					?brainMask	dc:format sp:Nrrd.
+
+				 	
+				}"""^^sparql:GraphPattern],
+        [ a msm:Postcondition ;
+            rdf:value """{		
+											
+					?normalizedBrainImage rdf:type sp:Category-3ANormalizedBrainImage.
+					?normalizedBrainImage dc:format sp:Nrrd.
+	
+				}"""^^sparql:GraphPattern] .

@@ -1,0 +1,5 @@
+?brainImage rdf:type  sp:Category-3ABrainImage.
+?brainImage	dc:format sp:Nrrd.
+					
+?brainMask rdf:type sp:Category-3ABrainMask.
+?brainMask	dc:format sp:Nrrd.
